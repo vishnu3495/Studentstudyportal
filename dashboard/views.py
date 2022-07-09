@@ -96,7 +96,7 @@ def youtube(request):
                 'input':text,
                 'title':i['title'],
                 'duration':i['duration'],
-                'thumbnails':i['thumbnails'][0]['url'],
+                'thumbnail':i['thumbnails'][0]['url'],
                 'channel':i['channel']['name'],
                 'link':i['link'],
                 'views':i['viewCount']['short'],
@@ -110,7 +110,7 @@ def youtube(request):
             result_list.append(result_dict)
             context={
                 'form':form,
-                'result':result_list
+                'results':result_list
 
             }
         return render(request,'dashboard/youtube.html',context)
@@ -193,7 +193,7 @@ def books(request):
             result_list.append(result_dict)
             context={
                 'form':form,
-                'result':result_list
+                'results':result_list
 
             }
         return render(request,'dashboard/books.html',context)
@@ -216,10 +216,10 @@ def dictionary(request):
             audio=answer[0]['phonetics'][0]['audio']
             definition=answer[0]['meanings'][0]['definitions'][0]['definition']
             example=answer[0]['meanings'][0]['definitions'][0]['example']
-            synonyms=answer[0]['phonetics'][0]['definitions'][0]['synonyms']
+            synonyms=answer[0]['meanings'][0]['definitions'][0]['synonyms']
             context={
                 'form':form,
-                'input':input,
+                'input':text,
                 'phonectics':phonectics,
                 'audio':audio,
                 'definition':definition,
